@@ -1,0 +1,295 @@
+/* Chamber Nation Member Directory — ported from the Duda directory widget.
+   Layout relies on Bootstrap 5 (the theme's, or docu.team's theme.min.css). */
+
+/* Columns follow the width the theme gives the directory, not the screen:
+   Bootstrap's col-md-* would otherwise squeeze the sidebar in narrow
+   content areas. */
+.cnmd-root {
+  container-type: inline-size;
+  container-name: cnmd;
+}
+
+@container cnmd (max-width: 860px) {
+  .cnmd-root > .row > .col-md-4,
+  .cnmd-root > .row > .col-md-8 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+@container cnmd (max-width: 640px) {
+  .cnmd-root .member_card .row > [class*="col-lg-"],
+  .cnmd-root .member_card .row > .col,
+  .cnmd-root .member_card .row > .badge-column {
+    flex: 0 0 100%;
+    max-width: 100%;
+    text-align: center;
+  }
+  .cnmd-root .member_card .d-flex {
+    justify-content: center;
+  }
+}
+
+.cnmd-root .member_name {
+  font-size: 26px !important;
+  margin: 0 0 0.5rem;
+}
+
+.cnmd-root .member_name a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.cnmd-root .member_name a:hover,
+.cnmd-root .member_name a:focus-visible {
+  text-decoration: underline;
+}
+
+.cnmd-root .alphabet .page-item {
+  padding: 5px 7px;
+  border: solid #eee 1px;
+  margin: 1px !important;
+  font-size: 14px;
+}
+
+.cnmd-root .alphabet .page-link {
+  border: 0;
+  padding: 0;
+  background: none;
+}
+
+.cnmd-root .alphabet .page-item.active {
+  background: var(--bs-primary, #0d6efd);
+}
+
+.cnmd-root .alphabet .page-item.active .page-link {
+  color: #fff;
+}
+
+.cnmd-root .pagination {
+  list-style: none;
+  flex-wrap: wrap;
+  margin-bottom: 0;
+  padding-left: 0;
+}
+
+.cnmd-root .btn {
+  border: 0 !important;
+}
+
+.cnmd-root .member_card {
+  box-shadow: 0 0.375rem 0.75rem rgba(140, 152, 164, 0.075);
+  border-color: rgba(238, 238, 238, 0.831372549);
+}
+
+.cnmd-root .member_logo {
+  max-width: 100%;
+  height: auto;
+}
+
+.cnmd-root .member_branch_designation,
+.cnmd-root .member_texting,
+.cnmd-root .member_address,
+.cnmd-root .member_representative,
+.cnmd-root .member_email {
+  font-size: 13px;
+}
+
+.cnmd-root .branch_logo {
+  width: 60px;
+  max-width: 100%;
+}
+
+.cnmd-root .member_about {
+  display: block;
+  overflow: visible;
+}
+
+.cnmd-root .member_about small {
+  display: inline;
+}
+
+.cnmd-root .read-more-link {
+  display: inline !important;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: var(--bs-link-color, #0d6efd);
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  vertical-align: baseline;
+}
+
+.cnmd-root .read-more-link:hover {
+  text-decoration: underline;
+  color: #0a58ca;
+}
+
+.cnmd-root .member_address a {
+  color: inherit;
+  transition: color 0.2s ease;
+}
+
+.cnmd-root .member_address a:hover {
+  color: #0a58ca;
+  text-decoration: none;
+}
+
+.cnmd-root .badge-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1rem;
+}
+
+.cnmd-root .badge-column .branch_logo {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 991px) {
+  .cnmd-root .badge-column {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+  .cnmd-root .badge-column .branch_logo {
+    margin: 0.25rem;
+  }
+}
+
+/* Fallbacks for docu.team theme classes when the site uses plain Bootstrap. */
+.cnmd-root .btn-soft-primary {
+  color: var(--bs-primary, #0d6efd);
+  background-color: rgba(13, 110, 253, 0.1);
+}
+
+.cnmd-root .btn-soft-primary:hover,
+.cnmd-root .btn-soft-primary:focus-visible {
+  color: #fff;
+  background-color: var(--bs-primary, #0d6efd);
+}
+
+.cnmd-root .divider-center {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #8c98a4;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+}
+
+.cnmd-root .divider-center::before,
+.cnmd-root .divider-center::after {
+  content: "";
+  flex: 1 1 0;
+  border-top: 1px solid #e7eaf3;
+}
+
+/* Category grid (CSS columns instead of Masonry). */
+.cnmd-root .cnmd-category-grid {
+  columns: 4 220px;
+  column-gap: 1.5rem;
+}
+
+.cnmd-root .cnmd-category-group {
+  break-inside: avoid;
+}
+
+/* Member page */
+.cnmd-member-page .cnmd-breadcrumbs a {
+  text-decoration: none;
+}
+
+.cnmd-member-page .member_logo {
+  max-height: 260px;
+  object-fit: contain;
+}
+
+.cnmd-member-page .cnmd-contact {
+  font-size: 15px;
+}
+
+.cnmd-member-page .cnmd-contact a {
+  word-break: break-word;
+}
+
+.cnmd-member-page .member_about p {
+  margin-bottom: 0.75rem;
+}
+
+/* "About" dialog (native <dialog>, no Bootstrap JS needed). */
+.cnmd-dialog {
+  width: min(800px, calc(100vw - 2rem));
+  max-height: 85vh;
+  padding: 0;
+  border: 0;
+  border-radius: 0.5rem;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.25);
+}
+
+.cnmd-dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.cnmd-dialog[open] {
+  display: flex;
+  flex-direction: column;
+}
+
+.cnmd-dialog__head,
+.cnmd-dialog__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+}
+
+.cnmd-dialog__head {
+  border-bottom: 1px solid #dee2e6;
+}
+
+.cnmd-dialog__foot {
+  justify-content: flex-end;
+  border-top: 1px solid #dee2e6;
+}
+
+.cnmd-dialog__title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.cnmd-dialog__body {
+  padding: 1.5rem;
+  overflow-y: auto;
+  white-space: pre-line;
+}
+
+.cnmd-dialog .btn-close:not(:empty),
+.cnmd-dialog .btn-close:empty {
+  min-width: 1.5rem;
+  min-height: 1.5rem;
+}
+
+/* Minimal fallback if Bootstrap isn't present at all. */
+.cnmd-root .visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.notranslate {
+  user-select: text;
+}
